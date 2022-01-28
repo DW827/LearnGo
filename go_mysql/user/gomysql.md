@@ -1,1 +1,0 @@
-### 结合net/http和database/sql实现一个使用MySQL存储用户信息的注册及登陆的简易web程序。

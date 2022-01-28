@@ -1,5 +1,7 @@
 package main
 
+// 结合net/http和database/sql实现一个使用MySQL存储用户信息的注册及登陆的简易web程序。
+
 import (
 	"database/sql"
 	"encoding/json"
@@ -33,9 +35,9 @@ func (err *Err) Error() string {
 
 func New(er *Er, err error) *Err {
 	return &Err{
-		Code: er.Code,
+		Code:    er.Code,
 		Message: er.Message,
-		Err: err,
+		Err:     err,
 	}
 }
 
@@ -62,7 +64,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello A用户!")
 }
 
-
 // api
 func registerHandler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
@@ -80,7 +81,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(string(b))
 	userInfo := &userRegisterInfo{}
-	err = json.Unmarshal(b, userInfo)	// 解析前端传来的json格式数据
+	err = json.Unmarshal(b, userInfo) // 解析前端传来的json格式数据
 	if err != nil {
 		fmt.Printf("解析参数时出错：%v\n", err.Error())
 		return

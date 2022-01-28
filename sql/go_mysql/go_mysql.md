@@ -18,6 +18,12 @@ Open打开一个dirverName指定的数据库，dataSourceName指定数据源，�
     3.接下来，我们定义一个全局变量db，用来保存数据库连接对象。将上面的示例代码拆分出一个独立的initDB函数，只需要在程序启动时调用一次该函数完成全局变量db的初始化，其他函数中就可以直接使用全局变量db了。
 
 ```go
+import (
+	"database/sql"
+
+	_ "github.com/go-sql-driver/mysql"
+)
+
 // 定义一个全局对象db
 var db *sql.DB
 
