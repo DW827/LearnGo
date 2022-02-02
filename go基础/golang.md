@@ -145,6 +145,14 @@ func main() {
 result：
 Hello Go！
 ```
+7. 字符串的常用操作
+len(str)	求长度
++或fmt.Sprintf	拼接字符串
+strings.Split	分割
+strings.contains	判断是否包含
+strings.HasPrefix,strings.HasSuffix	前缀/后缀判断
+strings.Index(),strings.LastIndex()	子串出现的位置
+strings.Join(a[]string, sep string)	join操作
 >[更多](https://www.topgoer.cn/docs/golang/chapter03-8)
 
 * ##### %格式化输出
@@ -235,6 +243,14 @@ func main() {
 	*a = 10
 	fmt.Println(*a) //10
 ```
+
+### for range键值循环
+Go语言中可以使用for range遍历数组、切片、字符串、map 及通道（channel）。 通过for range遍历的返回值有以下规律：
+
+	1. 数组、切片、字符串返回索引和值。
+	2. map返回键和值。
+	3. 通道（channel）只返回通道内的值。
+
 * ### 7.逗号ok模式
 * ，ok或者 ok,_ 两种写法是根据函数的返回值决定的，有的第一个返回的是bool,另一个是error信息，就选用ok,err进行判断，有的第一个参数是一个值或者nil，第二个参数是true/false，就选用value,ok。
 * 1.在函数返回时检测错误

@@ -61,7 +61,7 @@ func back(startindex, n, k int, path []int, ans *[][]int) {
         back(i+1, n, k, path, ans)
         // 回溯,上一条路走完了,回去换路
         path = path[:len(path)-1]
-    } 
+    }
 }
 ```
 
@@ -94,11 +94,11 @@ func back(nums, path []int, ans *[][]int) {
         }
         used[nums[i]] = true
         // 更新路径
-        path = append(path, nums[i])    
+        path = append(path, nums[i])
         // 递归
-        back(nums, path, ans)           
+        back(nums, path, ans)
         // 回溯,上一条路走完了,回去换路
-        path = path[:len(path)-1]       
+        path = path[:len(path)-1]
         used[nums[i]] = false
     }
 }
@@ -122,8 +122,8 @@ func letterCombinations(digits string) []string {
         "9": "wxyz",
     }
     ans := make([]string, 0)
-    var dfs func(int, string) 
-    
+    var dfs func(int, string)
+
     // 定义深度优先遍历函数
     dfs = func(i int, path string) {
         if i >= len(digits) {
@@ -167,5 +167,31 @@ func dfs(n, left, right int, path string, ans *[]string) {
     if left < right {
         dfs(n, left, right - 1, path + ")", ans)
     }
+}
+```
+
+### 4. 目标和的不同表达式数
+##### [力扣494](https://leetcode-cn.com/problems/target-sum/submissions/)
+#####
+```go
+func findTargetSumWays(nums []int, target int) int {
+    n := len(nums)
+    if n == 0 {
+        return 0
+    }
+    ans := 0
+    var path func(int, int)
+    path = func(cur, sum int) {
+        if cur == len(nums) {
+            if sum == target {
+                ans ++
+            }
+            return
+        }
+        path(cur+1, sum+nums[cur])
+        path(cur+1, sum-nums[cur])
+    }
+    path(0,0)
+    return ans
 }
 ```
